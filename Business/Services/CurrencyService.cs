@@ -5,7 +5,7 @@ using Domain.Enums;
 
 namespace Business.Services;
 
-public class CurrencyService : ICurrencyService
+public sealed class CurrencyService : ICurrencyService
 {
     private readonly CurrencyClient _currencyClient;
     private readonly IMapper _mapper;
@@ -15,9 +15,9 @@ public class CurrencyService : ICurrencyService
         _currencyClient = currencyClient;
         _mapper = mapper;
     }
-    public Task<IReadOnlyCollection<Currency>> GetAllCurrenciesAsync()
+    public async Task<IReadOnlyCollection<Currency>> GetCurrencyListAsync(int offset, int limit)
     {
-        throw new NotImplementedException();
+        return  await _currencyClient.GetCurrencyListAsync( offset, limit);
     }
 
     public async Task<Currency> GetCurrencyByCodeAsync(CurrencyCode code)

@@ -17,12 +17,21 @@ public class CurrencyController : Controller
         _currencyService = currencyService;
     }
     
-    [HttpGet]
+    [HttpGet("GetByCode")]
     public async Task<IActionResult> GetCurrencyByCode([FromQuery] CurrencyCode code)
     {
         var result = await _currencyService.GetCurrencyByCodeAsync(code);
         
         return Ok(new CurrencyInfoResponse
             (result.Id, result.NumCode, result.CharCode, result.Nominal, result.Name, result.Value, result.Previous));
+    }
+
+    [HttpGet("GetPage")]
+    public async Task<IActionResult> GetCurrenciesList(int? offset, int? limit)
+    {
+        var result = await 
+            _currencyService.GetCurrencyListAsync(offset.GetValueOrDefault(0), limit.GetValueOrDefault(5));
+
+        return Ok(result);
     }
 }

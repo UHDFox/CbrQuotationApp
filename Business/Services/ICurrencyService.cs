@@ -5,7 +5,7 @@ namespace Business.Services;
 
 public interface ICurrencyService
 {
-    public Task<IReadOnlyCollection<Currency>> GetAllCurrenciesAsync();
+    public Task<IReadOnlyCollection<Currency>> GetCurrencyListAsync(int offset, int limit);
     
     public Task<Currency> GetCurrencyByCodeAsync(CurrencyCode code);
 }
