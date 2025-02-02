@@ -1,6 +1,7 @@
 using AutoMapper;
 using Client;
 using Domain;
+using Domain.Enums;
 
 namespace Business.Services;
 
@@ -19,7 +20,7 @@ public class CurrencyService : ICurrencyService
         throw new NotImplementedException();
     }
 
-    public async Task<Currency> GetCurrencyByCodeAsync(string code)
+    public async Task<Currency> GetCurrencyByCodeAsync(CurrencyCode code)
     {
         var result = await _currencyClient.GetCurrencyByCodeAsync(code);
         

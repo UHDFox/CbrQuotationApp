@@ -1,5 +1,6 @@
 using Business.Services;
 using CbrQuotationApp.Contracts.Responses;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ public class CurrencyController : Controller
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetCurrencyByCode(string code)
+    public async Task<IActionResult> GetCurrencyByCode([FromQuery] CurrencyCode code)
     {
         var result = await _currencyService.GetCurrencyByCodeAsync(code);
         
