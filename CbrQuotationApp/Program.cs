@@ -15,6 +15,7 @@ builder.Services.AddBusiness();
 builder.Services.ConfigureSwaggerGen();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.ConfigureCurrencyClient(builder.Configuration);
+builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
